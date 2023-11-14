@@ -11850,7 +11850,7 @@ html, body {
 
 
 
-svg {
+.svg-urjc {
   position:relative;
   width: 80vw;
   height: 100%;
@@ -11858,6 +11858,7 @@ svg {
   text-transform: uppercase;
   font: 14.5em/1 Open Sans, Impact;
 }
+
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
@@ -12145,10 +12146,10 @@ textarea {
 
 
 .tas{
-margin-left: 38vw;
-transform: translate(-50%, -50%);
-height:auto;
-}
+  margin-left: 33vw;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height:auto;
 }
 
 .button{
