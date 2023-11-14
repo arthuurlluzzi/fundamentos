@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8"/>
     <!-- We use this tag to adapt the page to all devices and initialize the scaling  -->
@@ -28,13 +29,48 @@
 
     
 </head>
+
 <body>
-    
+
     <div class="cuadrado">
         <div class="row">
-            <div class="item" style="width: 93vw;margin-left: 2vw;color:white;" >
+            <div class="item" style="width: 89vw;margin-left: 2vw;color:white;" >
                 <h1  style="color: rgb(225, 184, 82); margin-top: 1vw; margin-bottom: 30px;">Nuevo Elemento</h1>
 
+  
+            <form style="font-size: 25px;">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input placeholder="Nombre de la asignatura" type="text" id="titulo">
+                </div>
+            
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input placeholder="URL de la imagen"  type="text" id="imagen">
+                </div>
+            
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea placeholder="Descripción de la asignatura"  id="descripcion" cols="20" rows="3"></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label for="creditos">Créditos:</label>
+                    <input placeholder="Numero de creditos de la asignatura"  type="text" id="creditos">
+                </div>
+                
+                <div class="form-group" >
+               
+                    <label style="margin-top: 10px;" for="miCheckbox">Cursada:<input style="height: 1.4vw;width: 4vw;" type="checkbox" id="miCheckbox" name="miCheckbox"></label>
+                  
+                </div>
+                <div style="margin-top: 2vw; margin-bottom: 1vw;">
+                    <button type="button" style="margin-right: 1vw;" class="float-up-button" type="submit">Guardar</button>
+                    <a style="text-decoration: none;color: inherit;" href="index.html">
+                    <button type="button" class="button-blur">Cancelar</button>
+                    </a>
+                </div>
+            </form>
             
 
                 
@@ -42,23 +78,10 @@
             </div>
         </div>
     </div>
+  
 
 
 
-
-       <!-- Footer-->
-    <footer class="footer py-4" style="background-color: rgb(255, 241, 216);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; Frikipedia 2023</div>
-                <div class="col-lg-4 my-3 my-lg-0">
-                  </div>
-                <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
+
