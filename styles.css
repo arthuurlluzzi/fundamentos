@@ -11940,7 +11940,7 @@ pop del {
 	text-transform: uppercase;
 	text-align: center;
 	text-decoration: none;
-	font-size: 4vw;
+	font-size: 80px;
 	font-weight: 90vw;
 	color: #fff;
 	letter-spacing: 5px;
@@ -12145,15 +12145,12 @@ textarea {
 /* Botón de nuevo elemento */
 
 
-.tas{
-  margin-left: 33vw;
-  transform: translate(-50%, -50%);
-  width: fit-content;
-  height:auto;
-}
 
+.tas{
+text-align: center;
+}
 .button{
-  width:20vw;
+  width:30vw;
   height:70px;
   background: linear-gradient(to left top, #F4D03F 50%, #F7DC6F 50%);
   border-style: none;
@@ -12164,7 +12161,7 @@ textarea {
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  position: absolute;
+  position: relative;
   padding: 0px;
   overflow: hidden;
   transition: all .5s;
@@ -12179,7 +12176,7 @@ textarea {
   width:200px;
   top:0px;
   left:-200px;
-  background: linear-gradient(to right, rgba(0,0,0,0), black);
+  background: linear-gradient(to right, rgba(0,0,0,0), #EB984E );
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
   animation: span1 2s linear infinite;
@@ -12199,7 +12196,7 @@ textarea {
   width: 3px;
   top:-70px;
   right:0px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0), black);
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #EB984E );
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
   animation: span2 1s linear infinite;
@@ -12218,7 +12215,7 @@ textarea {
   width:200px;
   right:-200px;
   bottom: 0px;
-  background: linear-gradient(to left, rgba(0,0,0,0), black);
+  background: linear-gradient(to left, rgba(0,0,0,0), #EB984E );
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
   animation: span3 2s linear infinite;
@@ -12238,7 +12235,7 @@ textarea {
   width:3px;
   bottom:-70px;
   left:0px;
-  background: linear-gradient(to top, rgba(0,0,0,0), black);
+  background: linear-gradient(to top, rgba(0,0,0,0), #EB984E );
   border-top-right-radius: 1px;
   border-top-left-radius: 1px;
   animation: span4 1s linear infinite;
