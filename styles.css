@@ -12145,10 +12145,10 @@ textarea {
 
 
 .tas{
-  margin-left: 33vw;
-  transform: translate(-50%, -50%);
-  width: fit-content;
-  height:auto;
+margin-left: 38vw;
+transform: translate(-50%, -50%);
+height:auto;
+}
 }
 
 .button{
