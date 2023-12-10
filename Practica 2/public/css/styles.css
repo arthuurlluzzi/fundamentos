@@ -13010,3 +13010,30 @@ button:focus {
   margin-top: 38vw;
 }
 
+* -------------------------------------------------------------------------
+-----------------------------PAGINA NEW ELEMENTO----------------------------- 
+------------------------------------------------------------------------- */
+.boton-guardar {
+  margin-top: 2vw;
+  margin-bottom: 1vw;
+}
+
+.lables {
+  margin-top: 10px;
+}
+
+.formulario {
+  font-size: 25px;
+}
+.title-new {
+  color: #3aa1bf;
+  margin-top: 1vw;
+  margin-bottom: 30px;
+}
+.contenedor-title-new {
+  width: 89vw;
+  margin-left: 2vw;
+  color: white;
+}
+
+.check-style{height: 1.4vw; width: 4vw}
