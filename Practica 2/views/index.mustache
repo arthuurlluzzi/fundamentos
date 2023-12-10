@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>URJC-OPINA</title>
+    <link rel="icon" type="image/x-icon" href="URJC - OPINA.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <ul class="menu">
+        <li><a href="#head">Welcome</a></li>
+        <li><a href="#portfolio">Asignaturas</a></li>
+        <li><a href="#team">Nosotros</a></li>
+      </ul>
+    </nav>
+
+    <header class="masthead" id="head">
+      <svg class="urjc-opina-logo" viewBox="0 0 1320 300">
+        <symbol id="s-text">
+          <text
+            text-anchor="middle"
+            class="svg-urjc"
+            x="50%"
+            y="50%"
+            dy=".35em"
+          >
+            URJC-OPINA
+          </text>
+        </symbol>
+        <use xlink:href="#s-text" class="text"></use>
+        <use xlink:href="#s-text" class="text"></use>
+        <use xlink:href="#s-text" class="text"></use>
+        <use xlink:href="#s-text" class="text"></use>
+        <use xlink:href="#s-text" class="text"></use>
+      </svg>
+      <div class="text-center">
+        <a href="#portfolio">
+          <div class="arrow"></div>
+        </a>
+      </div>
+    </header>
+
+    <hr class="linea-head" />
+    <section class="page-section" id="portfolio">
+      <div class="container">
+        <div class="text-center">
+          <div class="text-center">
+            <pop class="head">
+              <del data-bf="URJC-OPINA" data-af="2023">ASIGNATURAS</del>
+            </pop>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="row asignaturas" id="row">
+          {{#asignaturas}}
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item">
+              <a
+                class="portfolio-link"
+                data-bs-toggle="modal"
+                href="/masInfo/{{id}}"
+              >
+                <div class="portfolio-hover margin-index2">
+                  <div class="portfolio-hover-content">
+                    <i class="fas fa-plus fa-3x"></i>
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="{{imagen}}"
+                  alt="{{nombre}}"
+                  width="450"
+                  height="200"
+                />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">{{nombre}}</div>
+                <div class="portfolio-caption-subheading text-muted">
+                  {{descripcion}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/asignaturas}}
+        </div>
+      </div>
+      <hr class="linea-head" />
+      <div class="container-hover">
+        <a href="/nuevo" class="btn rounded"
+          ><span class="text-green">NUEVO ELEMENTO</span></a
+        >
+      </div>
+      <hr class="linea-head" />
+      <div class="container team" id="team">
+        <div class="text-center margin-team">
+          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+          <h3 class="section-subheading text-muted">
+            Just a couple of friends looking forward to being software
+            developers
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 margin-index">
+            <div class="team-member">
+              <img
+                class="mx-auto rounded-circle"
+                src="https://ih1.redbubble.net/image.487231397.7646/flat,1000x1000,075,f.u1.jpg"
+                alt="..."
+              />
+              <h4>Fernando Alonso</h4>
+              <p class="text-muted">Developer</p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="team-member">
+              <img
+                class="mx-auto rounded-circle"
+                src="https://i.ytimg.com/vi/59PcMbJG-Kw/maxresdefault.jpg"
+                alt="..."
+              />
+              <h4>Víctor Arroyo</h4>
+              <p class="text-muted">Developer</p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="team-member">
+              <img
+                class="mx-auto rounded-circle"
+                src="https://i.pinimg.com/236x/bb/19/3d/bb193d3c2af2d12905197222b95e635d.jpg"
+                alt="..."
+              />
+              <h4>Arthur Fiveguys</h4>
+              <p class="text-muted">Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-start">
+            Copyright &copy; Frikipedia 2023
+          </div>
+          <div class="col-lg-4 my-3 my-lg-0"></div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="link-dark text-decoration-none me-3" href="#!"
+              >Privacy Policy</a
+            >
+            <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
