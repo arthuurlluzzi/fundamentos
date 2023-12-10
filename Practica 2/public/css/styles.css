@@ -13010,7 +13010,7 @@ button:focus {
   margin-top: 38vw;
 }
 
-* -------------------------------------------------------------------------
+/* -------------------------------------------------------------------------
 -----------------------------PAGINA NEW ELEMENTO----------------------------- 
 ------------------------------------------------------------------------- */
 .boton-guardar {
@@ -13037,3 +13037,43 @@ button:focus {
 }
 
 .check-style{height: 1.4vw; width: 4vw}
+
+
+
+/* Botón close */
+
+.boclose {
+  color: var(--color);
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  padding: 1em 2em;
+  text-decoration: none;
+}
+.boclose:hover,
+button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+.close:hover,
+.close:focus {
+  box-shadow: inset -4em 0 0 0 var(--hover), inset 4em 0 0 0 var(--hover);
+}
+
+.close {
+  --color: #f2385a;
+  --hover: #f2385a;
+}
+
+.up {
+  --color: #56d9cd;
+  --hover: #56d9cd;
+}
+
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
