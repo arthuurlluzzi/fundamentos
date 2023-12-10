@@ -282,3 +282,19 @@ export function loadSampleData() {
     ],
   });
 }
+
+export function addAsignatura(asignatura) {
+  let id = nextId++; // Da dinamicamente una id a cada nueva asignatura
+  asignatura.id = id.toString(); // Guarda la id dentro de asignatura
+  asignaturas.set(asignatura.id, asignatura); // Guarda la asinatura en el mapa de esta manera id => asignatura
+  return id;
+}
+
+export function getAsignaturas(from, to) {
+  let values = [...asignaturas.values()];
+  if (from !== undefined) {
+    return values.slice(from, to);
+  } else {
+    return values;
+  }
+}
