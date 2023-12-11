@@ -12419,6 +12419,26 @@ pop.head del:hover:after {
 
 /* Nuevo elemento */
 
+.contenedor-externo {
+  visibility: hidden;
+  width: auto;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-error {
+  padding: 20px;
+  background-color: #ffcccc;
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+  height: 70px;
+}
+
+
+
 input {
   width: 90vw;
 }
@@ -13162,3 +13182,4 @@ button:focus {
   width: 40px;
   height: 19px;
 }
+

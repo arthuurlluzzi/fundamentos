@@ -1,16 +1,16 @@
-import express from 'express';
+import express from 'express'; 
 import mustacheExpress from 'mustache-express';
 import bodyParser from 'body-parser';
 import teamRouter from './teamRouter.js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-const app = express();
+const app = express(); 
 
 // Obtener el directorio actual (usando ESM)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
+ 
 // Utilizar archivos estáticos de la carpeta public
 app.use(express.static(join(__dirname, '/../public')));
 

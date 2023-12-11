@@ -29,50 +29,48 @@
       rel="stylesheet"
       type="text/css"
     />
-
+ <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
     <link href="css/styles.css" rel="stylesheet" />
 
     <script>
-      /*Comprobador de campos vacíos o erroneos*/
-      function validateForm() {
-        const titulo = document.getElementById("titulo");
-        const imagen = document.getElementById("imagen");
-        const descripcion = document.getElementById("descripcion");
-        const creditos = document.getElementById("creditos");
+      
+    function validateForm() {
+  const fields = [
+    { id: "titulo", error: "Error: Titulo vacío" },
+    { id: "imagen", error: "Error: Imágen vacío" },
+    { id: "descripcion", error: "Error: Descripción vacía" },
+    { id: "creditos", error: "Error: Número de créditos vacíos" },
+  ];
 
-        if (titulo.value.trim() === "") {
-          alert("Por favor, ingrese un título.");
-          titulo.focus();
-          return false;
-        }
+  const errorContainer = document.getElementById("error-container");
+  const errorMessage = document.getElementById("error-message");
 
-        if (imagen.value.trim() === "") {
-          alert("Por favor, ingrese una URL de imagen.");
-          imagen.focus();
-          return false;
-        }
-        try {
-          new URL(imagen.value);
-        } catch (_) {
-          alert("Por favor, ingrese una URL válida de imagen.");
-          imagen.focus();
-          return false;
-        }
+  for (const field of fields) {
+    const input = document.getElementById(field.id);
+    if (input.value.trim() === "") {
+      errorMessage.textContent = field.error;
+      errorContainer.style.visibility = "visible";
+      input.focus();
+      return false;
+    }
+  }
 
-        if (descripcion.value.trim() === "") {
-          alert("Por favor, ingrese una descripción.");
-          descripcion.focus();
-          return false;
-        }
+  // Validación adicional para la URL de la imagen
+  try {
+    new URL(document.getElementById("imagen").value);
+  } catch (_) {
+    errorMessage.textContent = "Error: Enlace corrupto";
+    errorContainer.style.visibility = "visible";
+    document.getElementById("imagen").focus();
+    return false;
+  }
 
-        if (creditos.value.trim() === "") {
-          alert("Por favor, ingrese el número de créditos.");
-          creditos.focus();
-          return false;
-        }
+  return true;
+}
 
-        return true;
-      }
     </script>
   </head>
 
@@ -82,6 +80,13 @@
         <div class="item contenedor-title-new">
           <h1 class="title-new">Nuevo Elemento</h1>
 
+          <div id="error-container" class="contenedor-externo">
+            <div class="contenedor-error">
+              <p id="error-message"></p>
+            </div>
+          </div>
+
+              
           <form
             class="formulario"
             action="/nuevoElemento"

@@ -18,29 +18,44 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png">
     <link href="/css/styles.css" rel="stylesheet" />
-    
-    <script>function validateFormSubelement() {
-    const imagen = document.querySelector('input[name="imagen"]');
-    const nombre = document.querySelector('input[name="nombre"]');
-    const opinion = document.querySelector('input[name="opinion"]');
+     <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
+    <script>
+  function validateForm1() {
+  const fields = [
+    { id: "imagen", error: "Error: Imágen vacío" },
+    { id: "nombre", error: "Error: Nombre vacío" },
+    { id: "opinion", error: "Error: Opinión vacía" },
+  ];
 
-    // Verificar si la entrada de la imagen es una URL válida
-    try {
-        new URL(imagen.value);
-    } catch (_) {
-        alert("Por favor, ingrese una URL válida de imagen.");
-        imagen.focus();
-        return false;
+  const errorContainer = document.getElementById("error-container");
+  const errorMessage = document.getElementById("error-message");
+
+  for (const field of fields) {
+    const input = document.getElementById(field.id);
+    if (input.value.trim() === "") {
+      errorMessage.textContent = field.error;
+      errorContainer.style.visibility = "visible";
+      input.focus();
+      return false;
     }
+  }
 
-    // Verificar si los campos están vacíos
-    if (imagen.value.trim() === "" || nombre.value.trim() === "" || opinion.value.trim() === "") {
-        alert("Por favor, complete todos los campos.");
-        return false;
-    }
+  // Validación adicional para la URL de la imagen
+  try {
+    new URL(document.getElementById("imagen").value);
+  } catch (_) {
+    errorMessage.textContent = "Error: Enlace corrupto";
+    errorContainer.style.visibility = "visible";
+    document.getElementById("imagen").focus();
+    return false;
+  }
 
-    return true;
-}</script>
+  return true;
+}
+</script>
 </head>
 
 
@@ -114,15 +129,21 @@
         <h2 class="text-form-opi">Añadir Opinión</h2>
         <hr class="linea-more-info">
 
-        <form action="/agregarOpinion/{{asignatura.id}}" method="post" onsubmit="return validateFormSubelement()"> <!-- Asegúrate de que la ruta sea la correcta -->
+          <div id="error-container" class="contenedor-externo">
+            <div class="contenedor-error">
+              <p id="error-message"></p>
+            </div>
+          </div>
+
+        <form action="/agregarOpinion/{{asignatura.id}}" method="post" onsubmit="return validateForm1()"> <!-- Asegúrate de que la ruta sea la correcta -->
             <div class="max3">
-                <h4 class="text-form-opi-cont">Imágen<input placeholder="URL de tú imagen de usuario"  class="casilla-input-2" name="imagen" /></h4>
+                <h4 class="text-form-opi-cont">Imágen<input placeholder="URL de tú imagen de usuario"  class="casilla-input-2"  id="imagen" name="imagen" /></h4>
             </div>
             <div>
-                <h4 class="text-form-opi-cont">Nombre<input class="casilla-input" placeholder="Tu nombre de usuario"  name="nombre" /></h4>
+                <h4 class="text-form-opi-cont">Nombre<input class="casilla-input" placeholder="Tu nombre de usuario" id="nombre" name="nombre" /></h4>
             </div>
             <div>
-                <h4 class="text-form-opi-cont">Opinion<input class="casilla-input" placeholder="Tu opinión"  name="opinion" /></h4>
+                <h4 class="text-form-opi-cont">Opinion<input class="casilla-input" placeholder="Tu opinión" id="opinion"  name="opinion" /></h4>
             </div>
             <button type="submit" class="bo-op pulse">Agregar Opinión</button>
         </form>
