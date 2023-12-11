@@ -18,6 +18,29 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png">
     <link href="/css/styles.css" rel="stylesheet" />
+    
+    <script>function validateFormSubelement() {
+    const imagen = document.querySelector('input[name="imagen"]');
+    const nombre = document.querySelector('input[name="nombre"]');
+    const opinion = document.querySelector('input[name="opinion"]');
+
+    // Verificar si la entrada de la imagen es una URL válida
+    try {
+        new URL(imagen.value);
+    } catch (_) {
+        alert("Por favor, ingrese una URL válida de imagen.");
+        imagen.focus();
+        return false;
+    }
+
+    // Verificar si los campos están vacíos
+    if (imagen.value.trim() === "" || nombre.value.trim() === "" || opinion.value.trim() === "") {
+        alert("Por favor, complete todos los campos.");
+        return false;
+    }
+
+    return true;
+}</script>
 </head>
 
 
@@ -40,7 +63,7 @@
                     <a href="/masInfo/modificar/{{asignatura.id}}" class="raise bo">EDITAR</a>
 
                 </div>
-            <a href="/"><button class="raise bo">VER TODOS LOS ELEMENTOS</button></a>
+            <a href="/"><button class="raise bo max3">VER TODOS LOS ELEMENTOS</button></a>
 
             </div>
 
@@ -91,15 +114,15 @@
         <h2 class="text-form-opi">Añadir Opinión</h2>
         <hr class="linea-more-info">
 
-        <form action="/agregarOpinion/{{asignatura.id}}" method="post"> <!-- Asegúrate de que la ruta sea la correcta -->
+        <form action="/agregarOpinion/{{asignatura.id}}" method="post" onsubmit="return validateFormSubelement()"> <!-- Asegúrate de que la ruta sea la correcta -->
             <div class="max3">
-                <h4 class="text-form-opi-cont">Imágen<input class="casilla-input-2" name="imagen" /></h4>
+                <h4 class="text-form-opi-cont">Imágen<input placeholder="URL de tú imagen de usuario"  class="casilla-input-2" name="imagen" /></h4>
             </div>
             <div>
-                <h4 class="text-form-opi-cont">Nombre<input class="casilla-input" name="nombre" /></h4>
+                <h4 class="text-form-opi-cont">Nombre<input class="casilla-input" placeholder="Tu nombre de usuario"  name="nombre" /></h4>
             </div>
             <div>
-                <h4 class="text-form-opi-cont">Opinion<input class="casilla-input" name="opinion" /></h4>
+                <h4 class="text-form-opi-cont">Opinion<input class="casilla-input" placeholder="Tu opinión"  name="opinion" /></h4>
             </div>
             <button type="submit" class="bo-op pulse">Agregar Opinión</button>
         </form>

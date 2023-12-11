@@ -298,3 +298,29 @@ export function getAsignaturas(from, to) {
     return values;
   }
 }
+
+// Devuelve una asignatura segun su id
+export function getAsignatura(id) {
+  return asignaturas.get(id);
+}
+
+export function borrarAsignatura(id) {
+  asignaturas.delete(id);
+}
+
+export function modificarAsignatura(
+  id,
+  nombre,
+  imagen,
+  descripcion,
+  creditos,
+  obligatorio
+) {
+  asignaturas.get(id).nombre = nombre;
+  asignaturas.get(id).imagen = imagen;
+  asignaturas.get(id).descripcion = descripcion;
+  asignaturas.get(id).creditos = creditos;
+  asignaturas.get(id).obligatorio = obligatorio;
+}
+
+loadSampleData();

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Nuevo Elemento</title>
+    <link rel="icon" type="image/x-icon" href="URJC - OPINA.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <script>
+      /*Comprobador de campos vacíos o erroneos*/
+      function validateForm() {
+        const titulo = document.getElementById("titulo");
+        const imagen = document.getElementById("imagen");
+        const descripcion = document.getElementById("descripcion");
+        const creditos = document.getElementById("creditos");
+
+        if (titulo.value.trim() === "") {
+          alert("Por favor, ingrese un título.");
+          titulo.focus();
+          return false;
+        }
+
+        if (imagen.value.trim() === "") {
+          alert("Por favor, ingrese una URL de imagen.");
+          imagen.focus();
+          return false;
+        }
+        try {
+          new URL(imagen.value);
+        } catch (_) {
+          alert("Por favor, ingrese una URL válida de imagen.");
+          imagen.focus();
+          return false;
+        }
+
+        if (descripcion.value.trim() === "") {
+          alert("Por favor, ingrese una descripción.");
+          descripcion.focus();
+          return false;
+        }
+
+        if (creditos.value.trim() === "") {
+          alert("Por favor, ingrese el número de créditos.");
+          creditos.focus();
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="cuadrado">
+      <div class="row">
+        <div class="item contenedor-title-new">
+          <h1 class="title-new">Nuevo Elemento</h1>
+
+          <form
+            class="formulario"
+            action="/nuevoElemento"
+            method="post"
+            onsubmit="return validateForm()"
+          >
+            <div class="form-group">
+              <label for="titulo">Título:</label>
+              <input
+                placeholder="Nombre de la asignatura"
+                type="text"
+                id="titulo"
+                name="nombre"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="imagen">Imagen:</label>
+              <input
+                placeholder="URL de la imagen"
+                type="text"
+                id="imagen"
+                name="imagen"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción:</label>
+              <textarea
+                placeholder="Descripción de la asignatura"
+                id="descripcion"
+                name="descripcion"
+                cols="20"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="creditos">Créditos:</label>
+              <input
+                placeholder="Numero de creditos de la asignatura"
+                type="text"
+                id="creditos"
+                name="creditos"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="lables" for="miCheckbox"
+                >Obligatoria:<input
+                  class="check-style"
+                  type="checkbox"
+                  id="obligatorio"
+                  name="obligatorio"
+              /></label>
+            </div>
+            <div class="boton-guardar">
+              <button class="up boclose">Guardar</button>
+            </div>
+          </form>
+
+          <a href="/">
+            <button class="close boclose">Cancelar</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

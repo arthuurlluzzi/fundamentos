@@ -1,73 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>MÁS INFORMACIÓN</title>
     <link rel="icon" type="image/x-icon" href="URJC - OPINA.png" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png">
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
     <link href="/css/styles.css" rel="stylesheet" />
-</head>
+ <script>
+      /*Comprobador de campos vacíos o erroneos*/
+      function validateForm() {
+        const titulo = document.getElementById("titulo");
+        const imagen = document.getElementById("imagen");
+        const descripcion = document.getElementById("descripcion");
+        const creditos = document.getElementById("creditos");
 
-<body>
+        if (titulo.value.trim() === "") {
+          alert("Por favor, ingrese un título.");
+          titulo.focus();
+          return false;
+        }
 
+        if (imagen.value.trim() === "") {
+          alert("Por favor, ingrese una URL de imagen.");
+          imagen.focus();
+          return false;
+        }
+        try {
+          new URL(imagen.value);
+        } catch (_) {
+          alert("Por favor, ingrese una URL válida de imagen.");
+          imagen.focus();
+          return false;
+        }
+
+        if (descripcion.value.trim() === "") {
+          alert("Por favor, ingrese una descripción.");
+          descripcion.focus();
+          return false;
+        }
+
+        if (creditos.value.trim() === "") {
+          alert("Por favor, ingrese el número de créditos.");
+          creditos.focus();
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+
+  </head>
+
+  <body>
     <div class="cuadrado">
-        <div class="row">
-            <div class="item" style="width: 89vw;margin-left: 2vw;color:white;" >
-                <h1 style="color: #3aa1bf; margin-top: 1vw; margin-bottom: 30px;">Modificar Elemento</h1>
+      <div class="row">
+        <div class="item contendor-title">
+          <h1 class="title-modificar">Modificar Elemento</h1>
 
-                
-                <form action="/modificar/{{asignatura.id}}" method="post">
-                    <div class="form-group">
-                 <label for="titulo">Título:</label>
-                 <input type="text" id="titulo" name="nombre" value="{{asignatura.nombre}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen">Imagen:</label>
-                    <input type="text" id="imagen" name="imagen" value="{{asignatura.imagen}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" cols="20" rows="3">{{asignatura.descripcion}}</textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="creditos">Créditos:</label>
-                    <input type="text" id="creditos" name="creditos" value="{{asignatura.creditos}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="miCheckbox">Obligatoria:</label>
-                    <input type="checkbox" id="obligatorio" name="obligatorio" {{#asignatura.obligatorio}}checked{{/asignatura.obligatorio}}>
-                </div>
-
-                <div style="margin-top: 2vw; margin-bottom: 1vw;">
-                    <button class="up boclose" >Guardar</button>
-                </div>
-</form>
-
-
-                <a href="/">
-                    <button class="close boclose">Cancelar</button>
-                </a>
-
+          <form action="/modificar/{{asignatura.id}}" method="post"   onsubmit="return validateForm()">
+            <div class="form-group">
+              <label  for="titulo">Título:</label>
+              <input
+                type="text"
+                id="titulo"
+                name="nombre"
+                value="{{asignatura.nombre}}"
+              />
             </div>
+
+            <div class="form-group">
+              <label for="imagen">Imagen:</label>
+              <input
+                type="text"
+                id="imagen"
+                name="imagen"
+                value="{{asignatura.imagen}}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción:</label>
+              <textarea id="descripcion" name="descripcion" cols="20" rows="3">
+{{asignatura.descripcion}}</textarea
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="creditos">Créditos:</label>
+              <input
+                type="text"
+                id="creditos"
+                name="creditos"
+                value="{{asignatura.creditos}}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="miCheckbox"
+                >Obligatoria: <input class="checkbox" type="checkbox"
+                id="obligatorio" name="obligatorio"
+                {{#asignatura.obligatorio}}checked{{/asignatura.obligatorio}}></label
+              >
+            </div>
+
+            <div class="boton-modificar">
+              <button class="up boclose">Guardar</button>
+            </div>
+          </form>
+
+          <a href="/">
+            <button class="close boclose">Cancelar</button>
+          </a>
         </div>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
