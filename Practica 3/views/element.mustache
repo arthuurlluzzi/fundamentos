@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Nuevo Elemento</title>
+    <link rel="icon" type="image/x-icon" href="URJC - OPINA.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+ <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
+    <link href="/css/styles.css" rel="stylesheet" />    
+    <script src="/js/scripts.js"></script>
+
+  </head>
+
+  <body>
+    <div class="cuadrado">
+      <div class="row">
+        <div class="item contenedor-title-new">
+          <h1 class="title-new">{{titulo}}</h1>
+
+
+<div id="error-container" class="contenedor-externo">
+  <div id="error-title"></div>
+  <div id="error-imagen"></div>
+  <div id="error-descripcion"></div>
+  <div id="error-creditos"></div>
+  <div id="error-servidor"></div>
+</div>
+
+
+<div class="form-container">
+<form  class="form"  action="{{action}}"  method="post" >
+  <div class="form-group">
+    <label for="titulo">Título:</label>
+    <input
+      placeholder="Nombre de la asignatura"
+      type="text"
+      id="titulo"
+      name="nombre"
+      value="{{asignatura.nombre}}"
+      oninput="validarCampo('titulo')"
+
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input
+      placeholder="URL de la imagen"
+      type="text"
+      id="imagen"
+      name="imagen"
+      value="{{asignatura.imagen}}"
+      oninput="validarCampo('imagen')"
+          title="El título debe comenzar con mayúscula"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="descripcion">Descripción:</label>
+    <textarea
+      placeholder="Descripción de la asignatura"
+      id="descripcion"
+      name="descripcion"
+      cols="20"
+      rows="3"
+      oninput="validarCampo('descripcion')"
+    >{{asignatura.descripcion}}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="creditos">Créditos:</label>
+    <input
+      placeholder="Numero de creditos de la asignatura"
+      type="text"
+      id="creditos"
+      name="creditos"
+      value="{{asignatura.creditos}}"
+      oninput="validarCampo('creditos')"
+    />
+  </div>
+
+  <div class="form-group container-ratio1">
+    <label for="miCheckbox"
+      >Obligatoria: </label
+    >
+    <label class="switch">
+   <input class="checkbox " type="checkbox"
+      id="obligatorio" name="obligatorio"
+      {{#asignatura.obligatorio}}checked{{/asignatura.obligatorio}}>
+   <span class="slider"></span>
+</label>
+    </div>
+    
+  
+ 
+        
+          
+</form>
+
+ <div  class="button-container "> 
+ 
+  <a href="/"> <button class="close boclose">Cancelar</button></a>
+
+ <button onclick="guardar()" class="up boclose guardar">Guardar</button></div>
+         
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
