@@ -281,3 +281,51 @@ export function loadSampleData() {
   });
  
 }
+
+export function getMap(){
+return asignaturas;
+
+}
+
+export function addAsignatura(asignatura) {
+  let id = nextId++; // Da dinamicamente una id a cada nueva asignatura
+  asignatura.id = id.toString(); // Guarda la id dentro de asignatura
+  asignaturas.set(asignatura.id, asignatura); // Guarda la asinatura en el mapa de esta manera id => asignatura
+  return id;
+}
+
+export function getAsignaturas(from, to) {
+  let values = [...asignaturas.values()];
+  if (from !== undefined) {
+    return values.slice(from, to);
+  } else {
+    return values;
+  }
+}
+
+// Devuelve una asignatura segun su id
+export function getAsignatura(id) {
+  return asignaturas.get(id);
+}
+
+export function borrarAsignatura(id) {
+  asignaturas.delete(id);
+} 
+
+export function modificarAsignatura(
+  id,
+  nombre,
+  imagen,
+  descripcion,
+  creditos,
+  obligatorio
+) {
+  asignaturas.get(id).nombre = nombre;
+  asignaturas.get(id).imagen = imagen;
+  asignaturas.get(id).descripcion = descripcion;
+  asignaturas.get(id).creditos = creditos;
+  asignaturas.get(id).obligatorio = obligatorio;
+}
+
+loadSampleData();
+
