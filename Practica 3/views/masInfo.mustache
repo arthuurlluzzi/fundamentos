@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+    <title>MÁS INFORMACIÓN</title>
+    <link rel="icon" type="image/x-icon" href="URJC - OPINA.png" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png">
+    <link href="/css/styles.css" rel="stylesheet" />
+     <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Logo_URJC.svg/1200px-Logo_URJC.svg.png"
+    />
+    <script>
+  function validateForm1() {
+  const fields = [
+    { id: "imagen", error: "Error: Imágen vacío" },
+    { id: "nombre", error: "Error: Nombre vacío" },
+    { id: "opinion", error: "Error: Opinión vacía" },
+  ];
+
+  const errorContainer = document.getElementById("error-container");
+  const errorMessage = document.getElementById("error-message");
+
+  for (const field of fields) {
+    const input = document.getElementById(field.id);
+    if (input.value.trim() === "") {
+      errorMessage.textContent = field.error;
+      errorContainer.style.visibility = "visible";
+      input.focus();
+      return false;
+    }
+  }
+
+  // Validación adicional para la URL de la imagen
+  try {
+    new URL(document.getElementById("imagen").value);
+  } catch (_) {
+    errorMessage.textContent = "Error: Enlace corrupto";
+    errorContainer.style.visibility = "visible";
+    document.getElementById("imagen").focus();
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+
+
+<body>
+ <nav >
+          <ul class="menu">
+            <li><a href="/#head">Welcome</a></li>
+            <li><a href="/#portfolio">Asignaturas</a></li>
+            <li><a href="/#team">Nosotros</a></li>
+          </ul>
+    </nav>
+    <div class="cuadrado">
+        <div class="row">
+            <div class="item imgane-a-izq" style=" background-image: url({{asignatura.imagen}});">
+              
+              
+                <div class="max5">
+                    <a href="/masInfo/{{asignatura.id}}/borrar" class="raise bo">BORRAR</a>
+                     
+                    <a href="/masInfo/modificar/{{asignatura.id}}" class="raise bo">EDITAR</a>
+
+                </div>
+            <a href="/"><button class="raise bo max3">VER TODOS LOS ELEMENTOS</button></a>
+
+            </div>
+
+            <div class="item item-derecha">
+                    <h1 class="hover-underline-animation h1-mas max2"> {{asignatura.nombre}}</h1>
+                    <div>
+                    <h3 class="left" >Descripción</h3>
+                    <h6 class="left">  {{asignatura.descripcion}}</h6>
+                    <h3 class="right">Créditos</h3>
+                    <h6 class="right">{{asignatura.creditos}}</h6  >
+                    <h3 class="left">Tipo de asignatura</h3>
+                    <h6 class="left">
+                        {{#asignatura.obligatorio}}
+                            OBLIGATORIA
+                        {{/asignatura.obligatorio}}
+                        {{^asignatura.obligatorio}}
+                            OPTATIVA
+                        {{/asignatura.obligatorio}}
+                    </h6>
+                </div>
+            
+
+        
+            <div class="item opiniones">
+            <hr class="linea-more-info">
+            
+            <div class="opinion-container">
+
+            {{#asignatura.opiniones}}
+                <div class="opicont2">
+                    <img src="{{imagen}}" alt="Imagen de la opinión" class="img-usuario-opi">
+                    <div>
+                        <h5 class="text-opi1">{{nombre}}</h5>
+                        <p class="text-opi2">{{opinion}}</p>
+                    </div>
+                </div>
+            {{/asignatura.opiniones}}
+
+                  
+                   
+                 </div> <!-- DIV CONTENTEDORES NO TOCAR -->                  
+            </div > <!-- DIV CONTENTEDORES NO TOCAR -->   
+            
+     <hr class="linea-more-info max1 >
+            
+<div class="cont-form-opi">
+    <div class="opinion-container">
+        <h2 class="text-form-opi">Añadir Opinión</h2>
+        <hr class="linea-more-info">
+
+<div id="error-container" class="contenedor-externo">
+  {{#errors}}
+    {{#nombre}}<div class="contenedor-error"><p>{{nombre}}</p></div>{{/nombre}}
+    {{#imagen}}<div class="contenedor-error"><p>{{imagen}}</p></div>{{/imagen}}
+    {{#opinion}}<div class="contenedor-error"><p>{{opinion}}</p></div>{{/opinion}}
+  {{/errors}}
+</div>
+
+<form action="/agregarOpinion/{{asignatura.id}}" method="post" onsubmit="return validateForm1()">
+    <div class="max3">
+        <h4 class="text-form-opi-cont">Imágen<input placeholder="URL de tú imagen de usuario" class="casilla-input-2" id="imagen" name="imagen" value="{{imagenCliente}}" /></h4>
+    </div>
+    <div>
+        <h4 class="text-form-opi-cont">Nombre<input class="casilla-input" placeholder="Tu nombre de usuario" id="nombre" name="nombre" value="{{nombreCliente}}" /></h4>
+    </div>
+    <div>
+        <h4 class="text-form-opi-cont">Opinion<input class="casilla-input" placeholder="Tu opinión" id="opinion" name="opinion" value="{{opinionCliente}}" /></h4>
+    </div>
+    <button type="submit" class="bo-op pulse">Agregar Opinión</button>
+</form>
+
+</div>
+
+
+</div>
+
+            
+
+</body>
+
+</html>

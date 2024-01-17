@@ -1,0 +1,31 @@
+    {{#asignaturas}}
+          <div class="col-lg-4 col-sm-6 mb-4 {{obligatorio}}" >
+            <div class="portfolio-item">
+              <a
+                class="portfolio-link"
+                data-bs-toggle="modal"
+                href="/masInfo/{{id}}"
+              >
+                <div class="portfolio-hover margin-index2">
+                  <div class="portfolio-hover-content">
+                    <i class="fas fa-plus fa-3x"></i>
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="{{imagen}}"
+                  alt="{{nombre}}"
+                  width="450"
+                  height="200"
+                />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">{{nombre}}</div>
+                <div class="portfolio-caption-subheading text-muted">
+                  {{descripcion}}
+                </div>
+                  
+              </div>
+            </div>
+          </div>
+          {{/asignaturas}}

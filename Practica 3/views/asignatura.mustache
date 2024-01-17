@@ -1,0 +1,38 @@
+    {{#asignaturas}}
+          <div class="col-lg-4 col-sm-6 mb-4 {{obligatorio}}" >
+            <div class="portfolio-item">
+              <a
+                class="portfolio-link"
+                data-bs-toggle="modal"
+                href="/masInfo/{{id}}"
+              >
+                <div class="portfolio-hover margin-index2">
+                  <div class="portfolio-hover-content">
+                    <i class="fas fa-plus fa-3x"></i>
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="{{imagen}}"
+                  alt="{{nombre}}"
+                  width="450"
+                  height="200"
+                />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">{{nombre}}</div>
+                <div class="portfolio-caption-subheading text-muted">
+                  {{descripcion}}
+                </div>
+                  <div class="aline" id={{id}}>
+            <label class="container2">
+            <input type="checkbox">
+            <svg viewBox="0 0 64 64" >
+              <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+            </svg>
+          </label>
+          </div>
+              </div>
+            </div>
+          </div>
+          {{/asignaturas}}
